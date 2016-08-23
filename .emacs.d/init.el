@@ -1,11 +1,8 @@
-(setq user-emacs-directory "~/dot-files/")
-(load "~/dot-files/init.el")
-
 (load-file "~/dot-files/.emacs.d/super-emacs/repositories.el")
-(load-file "~/dot-fies/.emacs.d/super-emacs/packages.el")
-(load-file "~/dot-fies/.emacs.d/super-emacs/interface.el")
-(load-file "~/dot-fies/.emacs.d/super-emacs/misc.el")
-(load-file "~/dot-fies/.emacs.d/super-emacs/key-bindings.el")
+(load-file "~/dot-files/.emacs.d/super-emacs/packages.el")
+(load-file "~/dot-files/.emacs.d/super-emacs/interface.el")
+(load-file "~/dot-files/.emacs.d/super-emacs/misc.el")
+(load-file "~/dot-files/.emacs.d/super-emacs/key-bindings.el")
 
 
 (custom-set-variables
