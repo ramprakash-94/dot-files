@@ -16,9 +16,11 @@
 
 ;Enable Line numbers globally
 (global-linum-mode t)
+(setq linum-format "%d ")
 
 ;Disable ring bell function
 (setq ring-bell-function 'ignore)
 
+;Spaceline Skin
 (require 'spaceline-config)
 (spaceline-helm-mode)

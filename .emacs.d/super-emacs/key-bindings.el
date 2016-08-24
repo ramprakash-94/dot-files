@@ -1,4 +1,4 @@
-(defvar super-emacs--my-keyboard-bindings 
+(defvar emacs--my-keyboard-bindings 
   '(("C-}" . mc/mark-next-like-this)
     ("C-{" . mc/mark-previous-like-this)
     ("C-|" . mc/mark-all-like-this)
@@ -21,15 +21,30 @@
     ("C-S-<right>" . buf-move-right)
     ("<f5>" . super-emacs-reload-current-file)))
 
-(defun super-emacs-apply-keyboard-bindings (pair)
+(defun emacs-apply-keyboard-bindings (pair)
   "Apply keyboard-bindings for supplied list of key-pair values"
   (global-set-key (kbd (car pair))
                   (cdr pair)))
 
-(mapc 'super-emacs-apply-keyboard-bindings
-      super-emacs--my-keyboard-bindings)
+(mapc 'emacs-apply-keyboard-bindings
+      emacs--my-keyboard-bindings)
 
 ;Swiper
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (global-set-key "\C-s" 'swiper)
+
+;;Helm
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+
+
+;;Windmove
+(global-set-key (kbd "<C-S-left>")  'windmove-left)
+(global-set-key (kbd "<C-S-right>") 'windmove-right)
+(global-set-key (kbd "<C-S-up>")    'windmove-up)
+(global-set-key (kbd "<C-S-down>")  'windmove-down)
+
+(global-unset-key (vector (list 'shift 'left)))
+(global-unset-key (vector (list 'shift 'right)))
+(global-unset-key (vector (list 'shift 'up)))
+(global-unset-key (vector (list 'shift 'down)))

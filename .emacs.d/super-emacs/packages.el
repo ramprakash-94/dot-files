@@ -66,7 +66,9 @@
 (helm-autoresize-mode 1)
 (setq helm-split-window-in-side-p
       t)
-;PYTHON
+
+
+;;PYTHON
 (elpy-enable)
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
@@ -75,3 +77,7 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 (elpy-use-ipython)
+
+;;Smartparens
+(require 'smartparens-config)
+(add-hook 'python-mode-hook #'smartparens-mode)
