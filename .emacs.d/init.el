@@ -1,9 +1,21 @@
-(load-file "~/dot-files/.emacs.d/super-emacs/repositories.el")
-(load-file "~/dot-files/.emacs.d/super-emacs/packages.el")
-(load-file "~/dot-files/.emacs.d/super-emacs/interface.el")
-(load-file "~/dot-files/.emacs.d/super-emacs/misc.el")
-(load-file "~/dot-files/.emacs.d/super-emacs/key-bindings.el")
+;(load-file "~/dot-files/.emacs.d/super-emacs/repositories.el")
+;(load-file "~/dot-files/.emacs.d/super-emacs/packages.el")
+;(load-file "~/dot-files/.emacs.d/super-emacs/interface.el")
+;(load-file "~/dot-files/.emacs.d/super-emacs/misc.el")
+;(load-file "~/dot-files/.emacs.d/super-emacs/key-bindings.el")
 
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+;;Bootstrap use package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(org-babel-load-file (expand-file-name "~/dot-files/.emacs.d/myinit.org"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

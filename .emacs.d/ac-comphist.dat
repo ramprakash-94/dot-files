@@ -1,4 +1,18 @@
-((("helm-execute-persistent-action" .
+((("expand-file-name" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("org-babel-load-languages" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("smartparens" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("emacs-lisp-mode-hook" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("emacs-lisp-mode" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("linum-mode" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("-1" .
+   [1 0])
+  ("helm-execute-persistent-action" .
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
   ("kbd" .
    [1 0 0])
@@ -13,4 +27,14 @@
   ("elpy-enable" .
    [0 0 0 0 0 1 0 0 0 0 0])
   ("encodedmsg" .
-   [2 0 0 0 0 0 0 0 0 0])))
+   [2 0 0 0 0 0 0 0 0 0])
+  ("defun" .
+   [1 0 0 0 0])
+  ("global-linum-mode" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("add-hook" .
+   [1 0 0 0 0 0 0 1])
+  ("nolinum" .
+   [0 0 0 1 0 0 0])
+  ("nil" .
+   [1 0 0])))
