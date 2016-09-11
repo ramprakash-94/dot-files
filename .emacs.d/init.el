@@ -1,9 +1,3 @@
-;(load-file "~/dot-files/.emacs.d/super-emacs/repositories.el")
-;(load-file "~/dot-files/.emacs.d/super-emacs/packages.el")
-;(load-file "~/dot-files/.emacs.d/super-emacs/interface.el")
-;(load-file "~/dot-files/.emacs.d/super-emacs/misc.el")
-;(load-file "~/dot-files/.emacs.d/super-emacs/key-bindings.el")
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives

@@ -28,6 +28,9 @@
 ;;Yes or no dialogs accept y-or-n
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;;Allows you to delete selected region when you start typing, instead of inserting text
+(delete-selection-mode 1)
+
 ;Load package.el
 (require 'package)
 
@@ -46,7 +49,7 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 
 ;;virtualenvwrapper
 (require 'virtualenvwrapper)
@@ -55,6 +58,11 @@
 (setq venv-location "~/Documents/Environments/")
 
 ;;(elpy-use-ipython)
+;;(use-package jedi
+;:ensure t
+;:init 
+;(add-hook 'python-mode-hook 'jedi:setup)
+;(add-hook 'python-mode-hook 'jedi:ac-setup))
 
 (use-package ox-reveal
 :ensure ox-reveal)
@@ -111,7 +119,7 @@
 
 ;;Default Fonts
 (set-default-font "Source Code Pro" nil t)
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 110)
 
 ;Configure theme-looper
 (theme-looper-set-theme-set '(deeper-blue
@@ -137,6 +145,13 @@
 (require 'smartparens-config)
 (add-hook 'python-mode-hook #'smartparens-mode)
 (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+
+;(require 'evil)
+;(evil-mode 1)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-+") 'er/mark-inside-pairs)
 
 (defvar emacs--my-keyboard-bindings 
   '(("C-}" . mc/mark-next-like-this)
