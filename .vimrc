@@ -48,6 +48,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'maralla/completor.vim'
+"Plug 'Valloric/YouCompleteMe'
 
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -63,3 +66,8 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Lightline settings
 set laststatus=2
+
+" Completor settings
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
