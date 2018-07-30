@@ -7,13 +7,18 @@ set clipboard=unnamed
 filetype on
 syntax on
 
+" activate search highlighting
 set hlsearch
+
+" Indent
+set cindent
 
 set ruler
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set timeoutlen=0 ttimeoutlen=0
+set smarttab autoindent
 
 " Put plugins and dictionaries in this dir (also on Windows)
 let vimDir = '$HOME/.vim'
@@ -50,6 +55,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'maralla/completor.vim'
+Plug 'benmills/vimux'
 "Plug 'Valloric/YouCompleteMe'
 
 
@@ -71,3 +77,7 @@ set laststatus=2
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+" Ignorecase Smartcase
+set ignorecase smartcase
+set incsearch
