@@ -48,6 +48,8 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-;") 'next-multiframe-window)
+
 
 ; Color Scheme
 (if window-system
@@ -83,10 +85,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+    ("3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
-    (dumb-jump zenburn-theme doom-themes evil-magit powerline-evil smart-mode-line evil yaml-mode writegood-mode web-mode undo-tree solarized-theme powerline markdown-mode magit goto-last-change flycheck autopair auto-complete))))
+    (material-theme monokai-theme leuven-theme org-bullets helm-ag dumb-jump zenburn-theme doom-themes evil-magit powerline-evil smart-mode-line evil yaml-mode writegood-mode web-mode undo-tree solarized-theme powerline markdown-mode magit goto-last-change flycheck autopair auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -131,3 +133,18 @@
 (global-set-key (kbd "C-h") #'previous-buffer)
 (global-set-key (kbd "C-l") #'next-buffer)
 
+; Terminal launch
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*ansi-term*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term (getenv "SHELL")))
+    (switch-to-buffer-other-window "*ansi-term*")))
+
+(global-set-key (kbd "C-x t") 'visit-term-buffer)
+
+; Auto pair mode
+(autopair-mode)
