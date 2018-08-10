@@ -23,6 +23,7 @@
 		      elpy
 		      undo-tree
                       evil
+		      helm-spotify-plus
                       yaml-mode))
 (package-initialize)
 
@@ -88,7 +89,7 @@
     ("3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
-    (material-theme monokai-theme leuven-theme org-bullets helm-ag dumb-jump zenburn-theme doom-themes evil-magit powerline-evil smart-mode-line evil yaml-mode writegood-mode web-mode undo-tree solarized-theme powerline markdown-mode magit goto-last-change flycheck autopair auto-complete))))
+    (helm-spotify-plus dockerfile-mode org-pomodoro ag projectile material-theme monokai-theme leuven-theme org-bullets helm-ag dumb-jump zenburn-theme doom-themes evil-magit powerline-evil smart-mode-line evil yaml-mode writegood-mode web-mode undo-tree solarized-theme powerline markdown-mode magit goto-last-change flycheck autopair auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -148,3 +149,11 @@
 
 ; Auto pair mode
 (autopair-mode)
+
+; Org Mode & Bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+; Spotify
+(require 'helm-spotify-plus)
+(global-set-key (kbd "C-'") 'helm-spotify-plus)
