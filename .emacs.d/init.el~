@@ -14,6 +14,7 @@
                       auto-complete
                       solarized-theme
                       flycheck
+                      smartparens
                       org
                       magit
 		      helm
@@ -23,8 +24,15 @@
 		      elpy
 		      undo-tree
                       evil
+                      yasnippet
+                      evil-easymotion
+		      helm-spotify-plus
+                      expand-region
                       yaml-mode))
 (package-initialize)
+
+; Mute ring bell
+(setq ring-bell-function 'ignore)
 
 ; fetch the list of packages available 
 (unless package-archive-contents
@@ -48,10 +56,12 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-;") 'next-multiframe-window)
+
 
 ; Color Scheme
 (if window-system
-    (load-theme 'zenburn t)
+    (load-theme 'doom-peacock t)
   (load-theme 'wombat t))
 
 ; Misc
@@ -83,10 +93,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+    ("3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(org-agenda-files (quote ("~/Dropbox/org/tasks.org" "~/Documents/tasks.org")))
  '(package-selected-packages
    (quote
-    (dumb-jump zenburn-theme doom-themes evil-magit powerline-evil smart-mode-line evil yaml-mode writegood-mode web-mode undo-tree solarized-theme powerline markdown-mode magit goto-last-change flycheck autopair auto-complete))))
+    (smartparens evil-easymotion doom expand-region yasnippet-classic-snippets yasnippet-snippets mu4e-maildirs-extension exec-path-from-shell evil-search-highlight-persist flymd linum-relative doom-modeline helm-spotify-plus dockerfile-mode org-pomodoro ag projectile material-theme monokai-theme leuven-theme org-bullets helm-ag dumb-jump zenburn-theme doom-themes evil-magit powerline-evil smart-mode-line evil yaml-mode writegood-mode web-mode undo-tree solarized-theme powerline markdown-mode magit goto-last-change flycheck autopair auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -112,7 +123,6 @@
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-
 ; auto-complete
 (ac-config-default)
 
@@ -125,9 +135,58 @@
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
-(global-set-key (kbd "s-.") #'elpy-goto-definition)
+(global-set-key (kbd "C-x .") #'elpy-goto-definition)
+
+(setq-default indent-tabs-mode nil)
+;; (add-hook 'python-mode-hook
+;;       (lambda ()
+;;         (setq indent-tabs-mode t)
+;;         (setq tab-width 4)
+;;         (setq python-indent-offset 4)))
 
 ; key bindings for changing buffers
 (global-set-key (kbd "C-h") #'previous-buffer)
 (global-set-key (kbd "C-l") #'next-buffer)
 
+; Terminal launch
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*ansi-term*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ansi-term (getenv "SHELL")))
+    (switch-to-buffer-other-window "*ansi-term*")))
+
+(global-set-key (kbd "C-x t") 'visit-term-buffer)
+
+; Auto pair mode
+(autopair-mode)
+
+; Org Mode & Bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+; Spotify
+(require 'helm-spotify-plus)
+(global-set-key (kbd "C-'") 'helm-spotify-plus)
+
+; Web Mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+; export org to pdf using latex
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+; expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+; evil-easymotion
+(require 'evil-easymotion)
+(evilem-default-keybindings "SPC")

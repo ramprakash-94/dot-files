@@ -92,3 +92,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /Users/reram/Documents/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias vim="/usr/local/bin/vim"
+
+# JAVA
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# GROOVY
+GROOVY_HOME=~/groovy; export GROOVY_HOME
+PATH=$GROOVY_HOME/bin:$PATH; export PATH
+
+# GRAILS
+GRAILS_HOME=~/grails; export GRAILS_HOME
+PATH=$GRAILS_HOME/bin:$PATH; export PATH
+
